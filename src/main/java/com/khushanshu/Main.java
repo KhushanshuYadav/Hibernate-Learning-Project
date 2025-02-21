@@ -1,17 +1,40 @@
 package com.khushanshu;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.jaxb.SourceType;
+import org.hibernate.cfg.Configuration;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+
+        System.out.println("Hello and welcome!");
+
+        Scanner sc = new Scanner(System.in);
+
+        Student s1= new Student();
+        s1.setsId(1);
+        s1.setsName("John Doe");
+        s1.setsAge(18);
+
+
+        Configuration config=new Configuration();
+
+        config.configure(); //this will configure our connection details i.e will load our config file details we can also pass parameter if config file is other than default
+
+        SessionFactory sessionFactory= config.buildSessionFactory();;
+
+        Session session= sessionFactory.openSession();     //it will open a new session for us i.e connection with databases
+
+        session.persist(s1);
+
+
+
+
+
     }
 }

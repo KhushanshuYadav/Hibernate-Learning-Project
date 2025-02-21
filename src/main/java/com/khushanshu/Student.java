@@ -6,9 +6,9 @@ package com.khushanshu;
 
 public class Student {
 
-    int sId;
-    String sName;
-    int sAge;
+    private int sId;
+    private String sName;
+    private int sAge;
 
     public void setsId(int sId) {
         this.sId = sId;
