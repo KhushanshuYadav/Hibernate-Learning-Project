@@ -3,6 +3,7 @@ package com.khushanshu;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.jaxb.SourceType;
 import org.hibernate.cfg.Configuration;
 
@@ -17,7 +18,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         Student s1= new Student();
-        s1.setsId(1);
+        //s1.setsId(1);                                                   //as auto generated so detached so setting it will throw the error
         s1.setsName("John Doe");
         s1.setsAge(18);
 
@@ -32,7 +33,14 @@ public class Main {
 
         Session session= sessionFactory.openSession();                  //it will open a new session for us i.e connection with databases
 
+        Transaction tx= session.beginTransaction();                     //need to create a transaction before any persistence logic is commited
+
         session.persist(s1);                                            //saves data to database as per our mapping on object
+
+        //so always write logic in a transaction so that can be rolled back
+
+
+        tx.commit();                                                    //commiting a transaction
 
 
 

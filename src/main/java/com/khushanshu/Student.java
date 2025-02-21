@@ -15,7 +15,7 @@ public class Student {
 
     @Id                                                     //marking a field as Id i.e primary key which is must in hibernate for unique identification
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // Auto-incremented ID
-    private int sId;
+    private int sId;                                        //use Integer instead of int to have avoid not null constraint i.e cols created by primitive datatypes always has not null constraints as in java also they cannot be null so can lead to exception on retrieval
     private String sName;
     private int sAge;
 
