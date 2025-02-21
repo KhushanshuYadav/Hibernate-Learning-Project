@@ -3,9 +3,18 @@ package com.khushanshu;
 //this is our class which will hold the data in java code
 //Now we will store this data in database using hibernate
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+//using entity annotation to mark this class as entity
+
+@Entity
 public class Student {
 
+    @Id                                                     //marking a field as Id i.e primary key which is must in hibernate for unique identification
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Auto-incremented ID
     private int sId;
     private String sName;
     private int sAge;

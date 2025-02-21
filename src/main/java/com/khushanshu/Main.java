@@ -24,13 +24,15 @@ public class Main {
 
         Configuration config=new Configuration();
 
-        config.configure(); //this will configure our connection details i.e will load our config file details we can also pass parameter if config file is other than default
+        config.addAnnotatedClass(com.khushanshu.Student.class);          //this will add the class to configuration
 
-        SessionFactory sessionFactory= config.buildSessionFactory();;
+        config.configure("hibernate.cfg.xml");                  //this will configure our connection details i.e will load our config file details we can also pass parameter if config file is other than default
 
-        Session session= sessionFactory.openSession();     //it will open a new session for us i.e connection with databases
+        SessionFactory sessionFactory= config.buildSessionFactory();
 
-        session.persist(s1);
+        Session session= sessionFactory.openSession();                  //it will open a new session for us i.e connection with databases
+
+        session.persist(s1);                                            //saves data to database as per our mapping on object
 
 
 
