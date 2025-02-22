@@ -34,15 +34,15 @@ public class Main {
         Session session= sessionFactory.openSession();                                                                  //it will open a new session for us i.e connection with databases
 
 
-          //CREATE Operation
+        //CREATE Operation
 
-//        Transaction tx= session.beginTransaction();                                                                   //need to create a transaction before any persistence logic is commited i.e writing to database
-//
-//        session.persist(s1);                                                                                          //saves data to database as per our mapping on object
-//
-//        //so always write logic in a transaction so that can be rolled back
-//
-//        tx.commit();                                                                                                  //commiting a transaction
+        Transaction tx= session.beginTransaction();                                                                   //need to create a transaction before any persistence logic is commited i.e writing to database
+
+        session.persist(s1);                                                                                          //saves data to database as per our mapping on object
+
+        //so always write logic in a transaction so that can be rolled back
+
+        tx.commit();                                                                                                  //commiting a transaction
 
 
 
@@ -92,9 +92,9 @@ public class Main {
         s8.setsName("Mary Jane");
         s8.setsAge(50);
 
-        Transaction tx= session.beginTransaction();
+        Transaction tx0= session.beginTransaction();
         session.persist(s8);
-        tx.commit();
+        tx0.commit();
 
         //say we update the data of Mary jane
         s8.setsAge(26);
