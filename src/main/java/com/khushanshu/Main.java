@@ -79,6 +79,8 @@ public class Main {
         Student s7=session.byId(Student.class).getReference(11);
         System.out.println(s7);
 
+        //get vs load => get returns null if data is absent but load throws object not found exception
+
 
         //UPDATE
 
